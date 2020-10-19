@@ -1,0 +1,67 @@
+* {
+	box-sizing: border-box;	
+}
+body {
+	background: #dce2f7;
+	margin: 0;
+	display: flex;
+	justify-content: center;
+}
+main {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-top: 5em;
+	width: 500px;
+}
+
+header {
+	background-color: #aa7ae4;
+	color: white;
+	font-size: 0.9em;
+	font-weight: bolder;
+	margin-bottom: 20px;
+	text-align: center;
+	width: 100%;
+}
+div.todo {
+	background-color: white;
+	padding: 15px 15px 30px;
+}
+.btn {
+	align-self: center;
+	border-radius: 15px;
+	border: none;
+	background-color: #aa7ae4;
+	color: white;
+	display: inline-block;
+	font-size: 1em;
+	font-weight: bolder;
+	margin-top: -20px;
+	outline: none;
+	padding: 10px;
+}
+.btn:active {
+	background-color: #a66bec;
+}
+.hidden {
+	display: none!important;
+}
+.new-task-text {
+	color: #8a8b8c;
+	display: block;
+}
+.todo-form {
+	padding-left: 3px;	
+}
+.todo-input {
+	border: 0;
+	/*border-bottom: 1px solid #ced4da;*/
+	width: 100%;
+}
+.todo-input:focus {
+	outline: none;
+}
+.line-bottom {
+	border-bottom: 1px solid #e5e5e5;
+}
