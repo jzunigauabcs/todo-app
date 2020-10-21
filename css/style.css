@@ -65,3 +65,36 @@ div.todo {
 .line-bottom {
 	border-bottom: 1px solid #e5e5e5;
 }
+
+.todo-list {
+	padding-left: 0;
+	list-style-type: none;
+}
+
+.todo-list li {
+	display: flex;
+	margin-bottom: 5px;
+}
+
+.todo-list li input {
+	margin-right: 4px;
+}
+
+.todo-list li label {
+	flex: 1 1 0;
+	font-size: 0.9em;
+}
+
+.todo-list li a {
+	color: red;
+	text-decoration: none;
+}
+
+.todo-list li a::before {
+	font-family: "Font Awesome 5 Free";
+	content: "\f2ed";
+}
+
+.task-complete {
+	text-decoration: line-through;
+}
