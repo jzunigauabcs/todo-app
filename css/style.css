@@ -1,67 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;900&display=swap');
+
 * {
-	box-sizing: border-box;	
+	box-sizing: border-box;
 }
+
+:root {
+	--primary-color: #aa7ae4;
+	--second-color: #a66bec;
+	--primary-text-color: #ffffff;
+}
+
 body {
-	background: #dce2f7;
-	margin: 0;
+	background-color: #dce2f7;
+	font-family: 'Roboto', sans-serif;
 	display: flex;
 	justify-content: center;
+	margin: 0;
 }
+
 main {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	margin-top: 5em;
-	width: 500px;
+	width: 400px;
 }
 
 header {
-	background-color: #aa7ae4;
-	color: white;
+	background-color: var(--primary-color);
+	color: var(--primary-text-color);
 	font-size: 0.9em;
-	font-weight: bolder;
 	margin-bottom: 20px;
 	text-align: center;
-	width: 100%;
 }
+
 div.todo {
 	background-color: white;
 	padding: 15px 15px 30px;
 }
-.btn {
-	align-self: center;
-	border-radius: 15px;
-	border: none;
-	background-color: #aa7ae4;
-	color: white;
-	display: inline-block;
-	font-size: 1em;
-	font-weight: bolder;
-	margin-top: -20px;
-	outline: none;
-	padding: 10px;
-}
-.btn:active {
-	background-color: #a66bec;
-}
-.hidden {
-	display: none!important;
-}
+
 .new-task-text {
 	color: #8a8b8c;
 	display: block;
 }
+
 .todo-form {
-	padding-left: 3px;	
+	padding-left: 3px;
 }
+
 .todo-input {
 	border: 0;
-	/*border-bottom: 1px solid #ced4da;*/
 	width: 100%;
 }
+
 .todo-input:focus {
 	outline: none;
 }
+
 .line-bottom {
 	border-bottom: 1px solid #e5e5e5;
+}
+
+.hidden {
+	display: none!important;
+}
+
+.btn-add {
+	align-self: center;
+	background-color: var(--primary-color);
+	border-radius: 15px;
+	border: none;
+	color: var(--primary-text-color);
+	cursor: pointer;
+	font-size: 1em;
+	font-weight: 900;
+	margin-top: -10px;
+	outline: none;
+	padding: 10px;
+}
+
+.btn-add:active {
+	background-color: var(--second-color);
+}
+.todo-list {
+	padding-left:0;	
+}
+
+.todo-list li {
+	display: flex;
+}
+
+.todo-list li input {
+	margin-right: 4px;
+}
+
+.todo-list li label {
+	flex: 1 1 0;
+	font-size: 0.9em;
+}
+
+.todo-list li a {
+	color: red;
+	text-decoration: none;
+}
+.todo-list li a:before {
+	font-family: "Font Awesome 5 Free";
+	content: "\f2ed";
+}
+
+.task-complete {
+	text-decoration: line-through;
 }

@@ -1,35 +1,59 @@
-
-const tasks = [];
-const todoInput = document.querySelector(".todo-input");
 const btnAdd = document.querySelector("#btnAdd");
-const newTaskText = document.querySelector(".new-task-text");
-let index = 1;
+const todoInput = document.querySelector(".todo-input");
 
 btnAdd.addEventListener("click", () => {
-	todoInput.classList.remove("hidden")
+	if(!todoInput.classList.contains("hidden"))
+		return;
+	document.querySelector(".new-task-text").classList.toggle("hidden");
+	todoInput.classList.toggle("hidden");
 	todoInput.focus();
-	newTaskText.classList.add("hidden")
-})
+} )
 
-todoInput.addEventListener("keypress", e => {
+todoInput.addEventListener("keypress", e =>{
 	if(e.key === "Enter") {
 		const task = e.target.value
-		tasks.unshift(new Task(task,index++))
+		const taskElement = makeTaskElement(task);
+		const parent = document.querySelector(".todo-list");
+		const taskCheckComplete = taskElement.querySelector("input[type=checkbox]");
+		const trashAnchor = taskElement.querySelector("a")
+
+		bindTaskEvent(taskCheckComplete, 'click', toggleTask);
+		bindTaskEvent(trashAnchor, 'click', deleteTask);
+		parent.prepend(taskElement);
 		e.target.value = "";
-		e.target.classList.toggle("hidden")
-		newTaskText.classList.toggle("hidden")
+		document.querySelector(".new-task-text").classList.toggle("hidden");
+		todoInput.classList.toggle("hidden");
 	}
-})
+});
 
-class Task {
-	constructor(task , i) {
-		this.task = task;
-		this.status = status = "incomplete";
-		this.i = i;
-	}
+const makeTaskElement = function(task) {
+	const li = document.createElement("li");
+	const checkbox = document.createElement("input");
+	const label = document.createElement("label");
+	const trashAnchor = document.createElement("a");
 
-	completeTask () {
-		this.status = "complete"
-	}
+	checkbox.type = "checkbox";
+	label.textContent = task;
+	trashAnchor.href = "#";
+	li.appendChild(checkbox);
+	li.appendChild(label);
+	li.appendChild(trashAnchor);
+
+	return li;
 }
 
+const bindTaskEvent = function(el, event, fn) {
+	el.addEventListener(event, fn);
+}
+
+const deleteTask = function(e) {
+	const parentTask = e.target.parentNode;
+	const parentList = parentTask.parentNode;
+	parentList.removeChild(parentTask);
+}
+
+const toggleTask = function(e) {
+	const parentTask = e.target.parentNode;
+	const labelTask = parentTask.querySelector("label");
+	labelTask.classList.toggle("task-complete");
+}
