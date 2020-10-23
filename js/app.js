@@ -1,7 +1,16 @@
 const todoInput = document.querySelector(".todo-input");
 const btnAdd = document.querySelector("#btnAdd");
 const newTaskText = document.querySelector(".new-task-text");
-let index = 1;
+const btnLoggin = document.querySelector("#btnLoggin");
+
+
+
+btnLoggin.addEventListener("click", () => {
+	const user = document.querySelector("#user").value;
+	const password = document.querySelector("#password").value;
+
+	document.cookie = `saludo=${user}; max-age=0;`;
+})
 
 btnAdd.addEventListener("click", () => {
 	todoInput.classList.remove("hidden")
@@ -57,8 +66,9 @@ const bindTaskEvent = function(el, event, fn) {
 
 const completeTask = function(e) {
 	const parent = e.target.parentNode;
-	const labelTask = parent.querySelector("label");
-	labelTask.classList.toggle("task-complete")
+	parent.classList.toggle("task-complete")
+	const taskCompleteNumber = document.querySelector(".task-complete-number span")
+	taskCompleteNumber.textContent = countTaskCompletes();	
 }
 
 const deleteTask = function(e) {
@@ -66,4 +76,10 @@ const deleteTask = function(e) {
 	const parentList = parent.parentNode;
 
 	parentList.removeChild(parent)
+	const taskCompleteNumber = document.querySelector(".task-complete-number span")
+	taskCompleteNumber.textContent = countTaskCompletes();	
+}
+
+const countTaskCompletes = function() {
+	return document.querySelectorAll("li.task-complete").length
 }
